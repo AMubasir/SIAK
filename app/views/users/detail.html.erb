@@ -1,0 +1,83 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+
+				<!-- PANEL HEADING -->
+				<div class="panel-heading">
+					<h4 style="text-align: center;">Student Details</h4>
+				</div>
+
+				<!-- PANEL BODY -->
+				<div class="panel-body">
+					<div class="row">
+						<!--First Column-->
+						<div class="col-md-9">
+							<dl class="dl-horizontal">
+								<dt>Student Number :</dt>
+								<dd><%= current_user.student_number %></dd>
+								<dt>Full Name :</dt>
+								<dd><%= current_user.full_name %></dd>
+								<dt>Email :</dt>
+								<dd><%= current_user.email %></dd>
+								<dt>Address :</dt>
+								<dd><%= current_user.address %></dd>
+								<dt>Grade :</dt>
+								<dd><%= current_user.grade %></dd>
+								<dt>Semester :</dt>
+								<dd><%= current_user.semester %></dd>
+								<dt>Place Of Birth :</dt>
+								<dd><%= current_user.place_of_birth %></dd>
+								<dt>Date Of Birth :</dt>
+								<dd><%= current_user.date_of_birth %></dd>
+								<dt>Phone :</dt>
+								<dd><%= current_user.phone %></dd>
+								<dt>Gender :</dt>
+								<dd><%= current_user.gender %></dd>
+								<dt>Religion :</dt>
+								<dd><%= current_user.religion %></dd>
+							</dl>
+						</div>
+					</div>
+				</div>					
+
+				<!-- PANEL FOOTER -->
+				<div class="panel-footer">
+					<div class="pull-right">
+						<%= link_to "Edit Your Profile", edit_user_registration_path, class: "btn btn-sm btn-info" %>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+		<div class="col-md-4">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 style="text-align: center;">Courses Taken</h4>
+				</div>
+
+				<div class="panel-body">
+					<ul>
+					<% current_user.courses.each do |course| %>
+						<li><%= course.name %></li>
+					<% end %>
+					</ul>
+				</div>
+
+				<div class="panel-footer">
+					<div class="pull-right">
+						<%= link_to "Select Courses", select_courses_users_path, class: "btn btn-sm btn-info" %>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+	</div>
+</div>

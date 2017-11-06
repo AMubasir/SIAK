@@ -1,0 +1,29 @@
+<%= form_for(@study_plan) do |f| %>
+  <% if @study_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@study_plan.errors.count, "error") %> prohibited this study_plan from being saved:</h2>
+
+      <ul>
+      <% @study_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :course_id %><br>
+    <%= f.select :course_id, Course.all.collect {|t| [t.name, t.id]}, {prompt: 'Select Course'}, multiple: :true %>
+  </div>
+  <div class="field" style="visibility: hidden">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

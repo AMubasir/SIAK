@@ -1,0 +1,57 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-centered">
+      <div class="panel panel-primary">
+        <!--PANEL HEADING-->
+        <div class="panel-heading">
+          <h4 style="text-align: center;">Listing Courses</h4>
+        </div>
+
+        <!-- PANEL BODY-->
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Credits</th>
+                <th>Code</th>
+                <th>Lecturer</th>
+                <th>Major</th>
+                <th colspan="3"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @courses.each do |course| %>
+                <tr>
+                  <td><%= course.name %></td>
+                  <td><%= course.credit %></td>
+                  <td><%= course.code %></td>
+                  <td><%= course.lecturer.full_name %></td>
+                  <td>
+                    <% course.major.each do |major| %>
+                      <%= major.name %>
+                      <%= "," unless major == course.major.last %>              
+                    <% end %>
+                  </td>
+                  <td><%= link_to "<i class=\"glyphicon glyphicon-folder-open\" style=\"color:#FEBD4D\"></i>".html_safe, course%></td>
+                  <td><%= link_to "<i class=\"glyphicon glyphicon-pencil\" style=\"color:blue\"></i>".html_safe, edit_course_path(course)%></td>
+                  <td><%= link_to "<i class=\"glyphicon glyphicon-remove\" style=\"color:red\"></i>".html_safe, course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>    
+        </div>
+
+        <!--PANEL FOOTER-->
+        <div class="panel-footer">
+          <div class="pull-right">
+            <%= link_to 'New Course', new_course_path, class: 'btn btn-sm btn-info' %>    
+          </div>
+        </div>
+ 
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-centered">
+      <div class="panel panel-primary">
+        <!--PANEL HEADING-->
+        <div class="panel-heading">
+          <h1 style="text-align: center;">Course Form</h1>      
+        </div>
+
+        <!--PANEL BODY-->
+        <div class="panel-body">
+
+          <div class="form-group">
+            <%= f.label :code %><br>
+            <%= f.text_field :code, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+          <%= f.label :major_id %><br>
+          <%= f.select :major_ids, Major.all.collect {|t| [t.name, t.id]}, { include_blank: true, :required => true, remote: true}, { class: 'chosen-select', multiple: true}  %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :name %><br>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :credit %><br>
+            <%= f.number_field :credit, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :lecturer_id %><br>
+            <%= f.collection_select :lecturer_id, Lecturer.all, :id, :full_name, {include_blank: true, :required => true, remote: true}, {class: 'form-control chosen-select'} %>
+          </div>
+        </div>
+
+        <!--PANEL FOOTER-->
+        <div class="panel-footer">
+          <div class="pull-right">
+            <%= f.submit "Submit", class: "btn btn-sm btn-info" %>
+            <%= link_to "Back", courses_path, class: "btn btn-sm btn-info" %>  
+          </div>
+        </div>
+
+      </div>    
+    </div>
+  </div>
+</div>
+
+<% end %>

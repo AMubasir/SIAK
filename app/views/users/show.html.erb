@@ -1,0 +1,41 @@
+<h1>Student Detail</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Student Number</th>
+			<th>Fullname</th>
+			<th>Email</th>
+			<th>Address</th>
+			<th>Grade</th>
+			<th>Semester</th>
+			<th>Place of Birth</th>
+			<th>Date of Birth</th>
+			<th>Phone</th>
+			<th>Gender</th>
+			<th>Religion</th>
+			<th>Courses</th>
+		</tr>
+	</thead>	
+	<tbody>
+		<tr>
+			<td><%= @user.student_number %></td>
+			<td><%= @user.full_name %></td>
+			<td><%= @user.email %></td>
+			<td><%= @user.address %></td>
+			<td><%= @user.grade %></td>
+			<td><%= @user.semester %></td>
+			<td><%= @user.place_of_birth %></td>
+			<td><%= @user.date_of_birth.try(:strftime, ("%e %B %Y")) %></td>
+			<td><%= @user.phone %></td>
+			<td><%= @user.gender %></td>
+			<td><%= @user.religion %></td>
+			<td>
+				<%= @user.courses.pluck(:name).to_sentence %>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<%= link_to "Edit Your Profile", edit_user_registration_path %><br>
+<%= link_to "Select Courses", select_courses_users_path %><br>

@@ -1,0 +1,32 @@
+<%= form_tag take_courses_users_path, method: "post" do %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-centered">
+			<div class="panel panel-primary">
+				<!--PANEL HEADING-->
+				<div class="panel-heading">
+					<h4 style="text-align: center;">Select Courses</h4>
+				</div>
+
+				<!--PANEL BODY-->
+				<div class="panel-body">
+					<div class="field">
+					    <%= label_tag :course_id %><br>
+					    <%= select_tag "course_ids[]", options_from_collection_for_select(@courses, :id, :name, current_user.course_ids), { include_blank: true, :required => true, remote: true, multiple: true, class: 'chosen-select'} %>
+				  	</div>
+				</div>
+
+				<!--PANEL FOOTER-->
+				<div class="panel-footer">
+					<div class="pull-right">
+						<%= submit_tag "Submit", class: "btn btn-sm btn-info" %>
+						<%= link_to "Back", detail_users_path, class: "btn btn-sm btn-info" %>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<% end %>

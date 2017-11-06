@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-5 col-centered">
+			<div class="panel panel-primary">
+
+				<!--PANEL HEADING-->
+				<div class="panel-heading">
+					<h4 style="text-align: center;">Major's Detail</h4>	
+				</div>
+
+				<!--PANEL BODY-->
+				<div class="panel-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Name</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><%= @major.name %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<!--PANEL FOOTER-->
+				<div class="panel-footer">
+					<div class="pull-right">
+						<%= link_to 'Edit', edit_major_path(@major), class: 'btn btn-sm btn-info' %>
+						<%= link_to 'Back', majors_path, class: 'btn btn-sm btn-info' %>						
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+

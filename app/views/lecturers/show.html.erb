@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lecturer number:</strong>
+  <%= @lecturer.lecturer_number %>
+</p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @lecturer.full_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @lecturer.address %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= @lecturer.date_of_birth %>
+</p>
+
+<p>
+  <strong>Place of birth:</strong>
+  <%= @lecturer.place_of_birth %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @lecturer.phone %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @lecturer.gender %>
+</p>
+
+<p>
+  <strong>Religion:</strong>
+  <%= @lecturer.religion %>
+</p>
+
+<%= link_to 'Edit', edit_lecturer_path(@lecturer) %> |
+<%= link_to 'Back', lecturers_path %>

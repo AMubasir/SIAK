@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIAK</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header class="navbar navbar-default" role="navigation">
+    <div class="navbar-inner">
+      <div class="container">
+        <div id="logo" class="navbar-brand"><%= link_to "HOME", root_path %></div>
+          <nav class="collapse navbar-collapse navbar-ex1-collapse">
+            <% if user_signed_in? %>
+              <ul class="nav navbar-nav navbar-right">
+                <li><%= link_to "Student Details", detail_users_path %></li>
+                <li><%= link_to "Courses", courses_path %></li>
+                <li><%= link_to "Majors", majors_path %></li>
+                <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            <% else %>
+              <ul class="nav navbar-nav pull-right">
+                <li><%= link_to "Log In", new_user_session_path %></li>
+                <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              </ul>
+            <% end %>     
+          </nav>
+      </div>
+    </div>
+  </header>
+
+    <div>
+      <%= yield %>      
+    </div>  
+
+</body>
+</html>

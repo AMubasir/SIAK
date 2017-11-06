@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-centered">
+      <div class="panel panel-primary">
+        <!--PANEL HEADING-->
+        <div class="panel panel-heading">
+          <h1 style="text-align: center;">Course Details</h1> 
+        </div>
+
+        <!--PANEL BODY-->
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Credits</th>
+                <th>Lecturer</th>
+                <th>Majors</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><%= @course.code %></td>
+                <td><%= @course.name %></td>
+                <td><%= @course.credit %></td>
+                <td><%= @course.lecturer.full_name %></td>
+                <td>
+                  <% @course.major.each do |major| %>              
+                    <ul class="list-group">
+                      <li class="list-group-item">
+                        <%= major.name %>
+                      </li>
+                    </ul>
+                  <% end %>  
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!--PANEL FOOTER-->
+        <div class="panel-footer">
+          <div class="pull-right">
+            <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-sm btn-info" %>
+            <%= link_to 'Back', courses_path, class: "btn btn-sm btn-info" %>
+          </div>
+        </div>
+
+      </div>    
+    </div>
+  </div>
+</div>
+  

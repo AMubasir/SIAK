@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @study_plan.code %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @study_plan.user.full_name %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @study_plan.course %>
+</p>
+
+<%= link_to 'Edit', edit_study_plan_path(@study_plan) %> |
+<%= link_to 'Back', study_plans_path %>
